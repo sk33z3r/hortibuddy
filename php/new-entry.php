@@ -13,7 +13,7 @@ $par = $_POST["par"];
 $notes = $_POST["notes"];
 
 // setup the db
-$db = new SQLite3("$user.hbd");
+$db = new SQLite3("../db/$user.hbd");
 $db->exec("CREATE TABLE IF NOT EXISTS $room (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, time TEXT, temp INTEGER, rh INTEGER, light TEXT, period TEXT, par INTEGER, notes TEXT);");
 
 // destroy the db
@@ -50,7 +50,7 @@ $html .= '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
 $html .= '<title>HortiBuddy!</title>';
 $html .= '<meta name="description" content="HortiBuddy, the garden companion">';
 $html .= '<meta name="viewport" content="width=device-width, initial-scale=1">';
-$html .= '<link rel="stylesheet" href="style.css">';
+$html .= '<link rel="stylesheet" href="../css/style.css">';
 $html .= '</head>';
 $html .= '<body>';
 $html .= '<!--[if lt IE 7]>';

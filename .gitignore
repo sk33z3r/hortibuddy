@@ -1,2 +1,3 @@
-.vscode/*
-*.hbd
+.vscode
+db
+assets/*.svg
