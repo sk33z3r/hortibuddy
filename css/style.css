@@ -7,21 +7,38 @@ body {
     background: #2c4130;
 }
 
+a, a:visited, a:hover, a:active {
+    border: none;
+    font-style: initial;
+}
+
 form * {
     margin: 10px auto;
     border: 0.5px #2c4130 solid;
-    background: #a5ecb1;
+    background: #86cf92;
     width: 200px;
     height: 25px;
     font-weight: bold;
 }
 
-h3 {
-    margin: 17px auto 32px auto;
+button {
+    width: 250px;
+    height: 55px;
+    margin: 10px auto;
+    background: #18241a;
+    border-radius: 100px;
+    color: #86cf92;
+    font-weight: bolder;
+    font-size: 16pt;
+    border: none;
 }
 
 h2 {
     margin: 0 auto;
+}
+
+h3 {
+    margin: 17px auto 32px auto;
 }
 
 #left {
@@ -45,6 +62,13 @@ h2 {
     height: 465px;
 }
 
+#table {
+    margin: 0 auto;
+    background: #86cf92;
+    width: 100%;
+    height: 480px;
+}
+
 .red {
     color: #A20;
     font-weight: bolder;
@@ -52,4 +76,49 @@ h2 {
 
 .notes {
     height: 85px;
+}
+
+/* Table style courtesy of https://divtable.com/table-styler/ */
+table.darkTable {
+    border: 2px solid #2C4130;
+    background-color: #70AD7A;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table.darkTable td, table.darkTable th {
+    border: 1px solid #2C4130;
+    padding: 3px 2px;
+}
+
+table.darkTable tbody td {
+    font-size: 13px;
+    color: #000000;
+}
+
+table.darkTable tr:nth-child(even) {
+    background: #90DE9C;
+}
+
+table.darkTable thead {
+    background: #2C4130;
+    border-bottom: 3px solid #2C4130;
+}
+
+table.darkTable thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #86CF92;
+    text-align: center;
+    border-left: 2px solid #2C4130;
+}
+
+table.darkTable thead th:first-child {
+    border-left: none;
+}
+
+table.darkTable tfoot td {
+    font-size: 12px;
 }

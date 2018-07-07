@@ -85,6 +85,6 @@ $html .= '</body>';
 $html .= '</html>';
 
 // show the html
-echo $html;
+print $html;
 
 ?>
