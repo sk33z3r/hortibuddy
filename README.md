@@ -12,6 +12,11 @@ HortiBuddy currently requires the following:
 * NGINX
 * SQLite3
 
+SQLite3 Table schema:
+```sql
+CREATE TABLE IF NOT EXISTS $room (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, time TEXT, temp INTEGER, rh INTEGER, light TEXT, period TEXT, par INTEGER, notes TEXT);
+```
+
 On an `apt` based system, you can run something like:
 
 ```bash
