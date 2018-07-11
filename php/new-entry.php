@@ -48,7 +48,7 @@ $html .= '<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->';
 $html .= '<head>';
 $html .= '<meta charset="utf-8">';
 $html .= '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
-$html .= '<title>HortiBuddy!</title>';
+$html .= '<title>HortiBuddy! | Entry Logged</title>';
 $html .= '<meta name="description" content="HortiBuddy, the garden companion">';
 $html .= '<meta name="viewport" content="width=device-width, initial-scale=1">';
 $html .= '<link rel="stylesheet" href="../css/style.css">';
