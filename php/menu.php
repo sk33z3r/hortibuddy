@@ -21,7 +21,8 @@ $db = new SQLite3("../db/$user.hbd");
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="main">
-            <h2>Main Menu</h2>
+            <div class="nav"><a href="../index.php">CHOOSE ANOTHER USER</a></div>
+            <h2><?php print $user; ?>'s Menu</h2>
             <a href="../php/entry-form.php?user=<?php print $user; ?>"><button>New Log Entry</button></a>
             <a href="../php/view-rooms.php?user=<?php print $user; ?>"><button>View Logs</button></a>
         </div>

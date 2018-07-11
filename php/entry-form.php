@@ -21,36 +21,39 @@ $db = new SQLite3("../db/$user.hbd");
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="main">
-            <h2>New Log Entry</h2>
-            <div id="left">
-                <h3>Room ID <span class="red">*</span></h3>
-                <h3>Temp. (F) <span class="red">*</span></h3>
-                <h3>RH (%) <span class="red">*</span></h3>
-                <h3>Light Type <span class="red">*</span></h3>
-                <h3>Photoperiod <span class="red">*</span></h3>
-                <h3>PAR (&#181;m)</h3>
-                <h3>Notes</h3>
-            </div>
-            <div id="right">
-                <form action="../php/new-entry.php?user=<?php print $user; ?>" method="POST">
-                    <input type="text" size="35" name="room" required/><br />
-                    <input type="text" size="35" name="temp" required/><br />
-                    <input type="text" size="35" name="rh" required/><br />
-                    <select name="light" required>
-                        <option value="HPS">HPS</option>
-                        <option value="MH">MH</option>
-                        <option value="CFL">CFL</option>
-                        <option value="LED">LED</option>
-                    </select><br />
-                    <select name="period" required>
-                        <option value="MOM">MOM</option>
-                        <option value="GROW">GROW</option>
-                        <option value="BLOOM">BLOOM</option>
-                    </select><br />
-                    <input type="text" size="35" name="par" /><br />
-                    <textarea name="notes" class="notes"></textarea><br />
-                    <input type="submit" value="SUBMIT" />
-                </form>
+            <?php print '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="../php/entry-form.php?user='.$user.'">NEW LOG ENTRY</a></div>'; ?>
+            <div id="form">
+                <h2>New Log Entry</h2>
+                <div id="left">
+                    <h3>Room ID <span class="red">*</span></h3>
+                    <h3>Temp. (F) <span class="red">*</span></h3>
+                    <h3>RH (%) <span class="red">*</span></h3>
+                    <h3>Light Type <span class="red">*</span></h3>
+                    <h3>Photoperiod <span class="red">*</span></h3>
+                    <h3>PAR (&#181;m)</h3>
+                    <h3>Notes</h3>
+                </div>
+                <div id="right">
+                    <form action="../php/new-entry.php?user=<?php print $user; ?>" method="POST">
+                        <input type="text" size="35" name="room" required/><br />
+                        <input type="text" size="35" name="temp" required/><br />
+                        <input type="text" size="35" name="rh" required/><br />
+                        <select name="light" required>
+                            <option value="HPS">HPS</option>
+                            <option value="MH">MH</option>
+                            <option value="CFL">CFL</option>
+                            <option value="LED">LED</option>
+                        </select><br />
+                        <select name="period" required>
+                            <option value="MOM">MOM</option>
+                            <option value="GROW">GROW</option>
+                            <option value="BLOOM">BLOOM</option>
+                        </select><br />
+                        <input type="text" size="35" name="par" /><br />
+                        <textarea name="notes" class="notes"></textarea><br />
+                        <input type="submit" value="SUBMIT" />
+                    </form>
+                </div>
             </div>
         </div>
     </body>
