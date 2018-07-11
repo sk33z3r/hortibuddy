@@ -1,14 +1,16 @@
 <?php
 
-// variables
+// set variables
 $user = $_POST["user"];
 $room = $_POST["room"];
 
-// setup the db
+// open the db
 $db = new SQLite3("../db/$user.hbd");
 
+// set SQL to grab rows of data
 $getRoom = $db->query("SELECT * FROM $room;");
 
+// set html page
 $html = '<!DOCTYPE html>';
 $html .= '<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->';
 $html .= '<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->';
@@ -42,6 +44,7 @@ $html .= '</tr>';
 $html .= '</thead>';
 $html .= '<tbody>';
 
+// parse and display each row from the db
 while(($row = $getRoom->fetchArray())){
     $html .= "<tr><td>" . $row['date'] . "</td><td>" . $row['time'] . "</td><td>" . $row['temp'] . "</td><td>" . $row['rh'] . "</td><td>" . $row['light'] . "</td><td>" . $row['period'] . "</td><td>" . $row['par'] . "</td><td>" . $row['notes'] . "</td></tr>";
 }
@@ -53,6 +56,7 @@ $html .= '</div>';
 $html .= '</body>';
 $html .= '</html>';
 
+// show html page
 print $html;
 
 ?>

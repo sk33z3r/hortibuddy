@@ -1,7 +1,7 @@
 <?php
-// variables
+// set the username
 $user = $_GET["user"];
-// setup the db
+// open the db
 $db = new SQLite3("../db/$user.hbd");
 ?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -25,7 +25,9 @@ $db = new SQLite3("../db/$user.hbd");
             <form action="../php/display-stats.php" method="POST">
                 <input type="hidden" name="user" value="<?php print $user; ?>" />
                 <?php
+                    // set the SQL to get table names
                     $tablesquery = $db->query("SELECT name FROM main.sqlite_master WHERE type='table';");
+                    // get and parse the table names for display, then display them
                     while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
                         if($table['name'] != 'sqlite_sequence') {
                             print "<button type=\"submit\" name=\"room\" value=\"".$table['name']."\">".$table['name']."</button>";

@@ -1,6 +1,6 @@
 <?php
 
-// variables
+// set variables
 $date = date("Y-m-d");
 $time = date("H:i:s");
 $user = $_POST["user"];
@@ -12,7 +12,7 @@ $period = $_POST["period"];
 $par = $_POST["par"];
 $notes = $_POST["notes"];
 
-// setup the db
+// open the db
 $db = new SQLite3("../db/$user.hbd");
 $db->exec("CREATE TABLE IF NOT EXISTS $room (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, time TEXT, temp INTEGER, rh INTEGER, light TEXT, period TEXT, par INTEGER, notes TEXT);");
 
@@ -20,17 +20,18 @@ $db->exec("CREATE TABLE IF NOT EXISTS $room (id INTEGER PRIMARY KEY AUTOINCREMEN
 // unlink("$user.db");
 
 // write the form data
+
 // main
 $db->exec("INSERT INTO $room (date, time, temp, rh, light, period) VALUES ('$date', '$time', '$temp', '$rh', '$light', '$period');");
 
-// grab the row ID now
+// grab the row ID that was just created for later use
 $lastID = $db->lastInsertRowID();
 
-// set non-required fields
+// set non-required fields separately, to avoid some entry and syntax errors if left empty
 $db->exec("UPDATE $room SET par = $par WHERE id = $lastID;");
 $db->exec("UPDATE $room SET notes = \"$notes\" WHERE id = $lastID;");
 
-// read back values from the db for the html display
+// read back values from the db for the html display, as a method of verifying the entry was successful
 $temp = $db->querySingle("SELECT temp FROM $room WHERE id = $lastID;");
 $rh = $db->querySingle("SELECT rh FROM $room WHERE id = $lastID;");
 $light = $db->querySingle("SELECT light FROM $room WHERE id = $lastID;");
@@ -38,7 +39,7 @@ $period = $db->querySingle("SELECT period FROM $room WHERE id = $lastID;");
 $par = $db->querySingle("SELECT par FROM $room WHERE id = $lastID;");
 $notes = $db->querySingle("SELECT notes FROM $room WHERE id = $lastID;");
 
-// setup the html
+// setup the html page
 $html = '<!DOCTYPE html>';
 $html .= '<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->';
 $html .= '<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->';

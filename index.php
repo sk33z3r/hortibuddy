@@ -1,4 +1,5 @@
 <?php
+// scan the db directory
 $files = scandir("db/", 0); ?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -20,6 +21,8 @@ $files = scandir("db/", 0); ?><!DOCTYPE html>
             <h2>Available Databases</h2>
             <form action="php/menu.php" method="POST">
                 <?php
+                    // Grab the filenames of all .hbd files in the db folder, then strip out .hbd and present the user with all the options
+                    // Start with 2 because unix prints `.` and `..` as items in the array
                     for($i = 2; $i < count($files); $i++) {
                         print "<button type=\"submit\" name=\"user\" value=\"".substr($files[$i], 0, -4)."\">".substr($files[$i], 0, -4)."</button>";
                     }
