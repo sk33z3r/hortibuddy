@@ -19,15 +19,13 @@ $files = scandir("db/", 0); ?><!DOCTYPE html>
         <![endif]-->
         <div id="main">
             <h2>Available Databases</h2>
-            <form action="php/menu.php" method="POST">
-                <?php
-                    // Grab the filenames of all .hbd files in the db folder, then strip out .hbd and present the user with all the options
-                    // Start with 2 because unix prints `.` and `..` as items in the array
-                    for($i = 2; $i < count($files); $i++) {
-                        print "<button type=\"submit\" name=\"user\" value=\"".substr($files[$i], 0, -4)."\">".substr($files[$i], 0, -4)."</button>";
-                    }
-                ?>
-            </form>
+            <?php
+                // Grab the filenames of all .hbd files in the db folder, then strip out .hbd and present the user with all the options
+                // Start with 2 because unix prints `.` and `..` as items in the array
+                for($i = 2; $i < count($files); $i++) {
+                    print '<a href="php/menu.php?user='.substr($files[$i], 0, -4).'"><button>'.substr($files[$i], 0, -4).'</button></a>';
+                }
+            ?>
         </div>
     </body>
 </html>

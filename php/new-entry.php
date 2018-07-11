@@ -3,7 +3,7 @@
 // set variables
 $date = date("Y-m-d");
 $time = date("H:i:s");
-$user = $_POST["user"];
+$user = $_GET["user"];
 $room = $_POST["room"];
 $temp = $_POST["temp"];
 $rh = $_POST["rh"];

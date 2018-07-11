@@ -1,7 +1,7 @@
 <?php
 
 // set variables
-$user = $_POST["user"];
+$user = $_GET["user"];
 $room = $_POST["room"];
 
 // open the db

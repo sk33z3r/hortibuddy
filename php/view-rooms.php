@@ -22,8 +22,7 @@ $db = new SQLite3("../db/$user.hbd");
         <![endif]-->
         <div id="main">
             <h2>Available Rooms</h2>
-            <form action="../php/display-stats.php" method="POST">
-                <input type="hidden" name="user" value="<?php print $user; ?>" />
+            <form action="../php/display-stats.php?user=<?php print $user; ?>" method="POST">
                 <?php
                     // set the SQL to get table names
                     $tablesquery = $db->query("SELECT name FROM main.sqlite_master WHERE type='table';");

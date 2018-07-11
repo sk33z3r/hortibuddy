@@ -32,8 +32,7 @@ $db = new SQLite3("../db/$user.hbd");
                 <h3>Notes</h3>
             </div>
             <div id="right">
-                <form action="../php/new-entry.php" method="POST">
-                    <input type="hidden" name="user" value="<?php print $user; ?>" />
+                <form action="../php/new-entry.php?user=<?php print $user; ?>" method="POST">
                     <input type="text" size="35" name="room" required/><br />
                     <input type="text" size="35" name="temp" required/><br />
                     <input type="text" size="35" name="rh" required/><br />

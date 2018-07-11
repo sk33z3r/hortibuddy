@@ -1,6 +1,6 @@
 <?php
 // set the username
-$user = $_POST["user"];
+$user = $_GET["user"];
 // open the db
 $db = new SQLite3("../db/$user.hbd");
 ?><!DOCTYPE html>
