@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+// variables
+$user = $_GET["user"];
+// setup the db
+$db = new SQLite3("../db/$user.hbd");
+?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -28,6 +33,7 @@
             </div>
             <div id="right">
                 <form action="../php/new-entry.php" method="POST">
+                    <input type="hidden" name="user" value="<?php print $user; ?>" />
                     <input type="text" size="35" name="room" required/><br />
                     <input type="text" size="35" name="temp" required/><br />
                     <input type="text" size="35" name="rh" required/><br />

@@ -1,8 +1,8 @@
 <?php
 // variables
-$user = $_POST["user"];
+$user = $_GET["user"];
 // setup the db
-$db = new SQLite3("../db/$user");
+$db = new SQLite3("../db/$user.hbd");
 ?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -22,7 +22,7 @@ $db = new SQLite3("../db/$user");
         <![endif]-->
         <div id="main">
             <h2>Available Rooms</h2>
-            <form action="display-stats.php" method="POST">
+            <form action="../php/display-stats.php" method="POST">
                 <input type="hidden" name="user" value="<?php print $user; ?>" />
                 <?php
                     $tablesquery = $db->query("SELECT name FROM main.sqlite_master WHERE type='table';");

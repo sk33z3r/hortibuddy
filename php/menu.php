@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+// variables
+$user = $_POST["user"];
+// setup the db
+$db = new SQLite3("../db/$user.hbd");
+?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -9,7 +14,7 @@
         <title>HortiBuddy!</title>
         <meta name="description" content="HortiBuddy, the garden companion">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -17,8 +22,8 @@
         <![endif]-->
         <div id="main">
             <h2>Main Menu</h2>
-            <a href="html/new-entry.html"><button>New Log Entry</button></a>
-            <a href="php/view-db.php"><button>View Logs</button></a>
+            <a href="../php/entry-form.php?user=<?php print $user; ?>"><button>New Log Entry</button></a>
+            <a href="../php/view-rooms.php?user=<?php print $user; ?>"><button>View Logs</button></a>
         </div>
     </body>
 </html>

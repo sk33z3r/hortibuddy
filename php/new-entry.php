@@ -3,7 +3,7 @@
 // variables
 $date = date("Y-m-d");
 $time = date("H:i:s");
-$user = "admin.hbd";
+$user = $_POST["user"];
 $room = $_POST["room"];
 $temp = $_POST["temp"];
 $rh = $_POST["rh"];
@@ -13,7 +13,7 @@ $par = $_POST["par"];
 $notes = $_POST["notes"];
 
 // setup the db
-$db = new SQLite3("../db/$user");
+$db = new SQLite3("../db/$user.hbd");
 $db->exec("CREATE TABLE IF NOT EXISTS $room (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, time TEXT, temp INTEGER, rh INTEGER, light TEXT, period TEXT, par INTEGER, notes TEXT);");
 
 // destroy the db

@@ -5,7 +5,7 @@ $user = $_POST["user"];
 $room = $_POST["room"];
 
 // setup the db
-$db = new SQLite3("../db/$user");
+$db = new SQLite3("../db/$user.hbd");
 
 $getRoom = $db->query("SELECT * FROM $room;");
 
