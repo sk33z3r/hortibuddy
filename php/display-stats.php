@@ -5,7 +5,9 @@ $user = $_GET["user"];
 $room = $_POST["room"];
 
 // open the db
-$db = new SQLite3("../db/$user.hbd");
+if (file_exists("../db/$user.hbd")) {
+    $db = new SQLite3("../db/$user.hbd");
+}
 
 // set SQL to grab rows of data
 $getRoom = $db->query("SELECT * FROM $room;");

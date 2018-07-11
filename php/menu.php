@@ -2,7 +2,9 @@
 // set the username
 $user = $_GET["user"];
 // open the db
-$db = new SQLite3("../db/$user.hbd");
+if (file_exists("../db/$user.hbd")) {
+    $db = new SQLite3("../db/$user.hbd");
+}
 ?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->

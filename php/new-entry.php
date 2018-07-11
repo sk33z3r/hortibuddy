@@ -13,8 +13,9 @@ $par = $_POST["par"];
 $notes = $_POST["notes"];
 
 // open the db
-$db = new SQLite3("../db/$user.hbd");
-$db->exec("CREATE TABLE IF NOT EXISTS $room (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, time TEXT, temp INTEGER, rh INTEGER, light TEXT, period TEXT, par INTEGER, notes TEXT);");
+if (file_exists("../db/$user.hbd")) {
+    $db = new SQLite3("../db/$user.hbd");
+}
 
 // destroy the db
 // unlink("$user.db");
