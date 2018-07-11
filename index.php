@@ -26,8 +26,8 @@ $files = scandir("db/", 0); ?><!DOCTYPE html>
                     print '<a href="php/menu.php?user='.substr($files[$i], 0, -4).'"><button>'.substr($files[$i], 0, -4).'</button></a>';
                 }
             ?>
-            <a href="php/del-db.php"><button id="create">Delete</button></a>
-            <a href="php/new-db.php"><button id="create">Create New</button></a>
+            <a href="php/del-db.php"><button>Delete</button></a>
+            <a href="php/new-db.php"><button>Create New</button></a>
         </div>
     </body>
 </html>
