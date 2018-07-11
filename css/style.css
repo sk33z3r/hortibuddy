@@ -33,12 +33,40 @@ button {
     border: none;
 }
 
+button:hover, button:visited, button:active {
+    width: 250px;
+    height: 55px;
+    margin: 10px;
+    background: #6da877;
+    border-radius: 100px;
+    color: #18241a;
+    font-weight: bolder;
+    font-size: 16pt;
+    border: none;
+}
+
+button:active {
+    width: 250px;
+    height: 55px;
+    margin: 10px;
+    background: #a0f7ae;
+    border-radius: 100px;
+    color: #18241a;
+    font-weight: bolder;
+    font-size: 16pt;
+    border: none;
+}
+
 h2 {
     margin: 10px auto;
 }
 
 h3 {
     margin: 17px auto 32px auto;
+}
+
+#create {
+    margin-top: 100px;
 }
 
 #left {
