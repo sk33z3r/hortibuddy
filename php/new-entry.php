@@ -17,9 +17,6 @@ if (file_exists("../db/$user.hbd")) {
     $db = new SQLite3("../db/$user.hbd");
 }
 
-// destroy the db
-// unlink("$user.db");
-
 // write the form data
 
 // main
