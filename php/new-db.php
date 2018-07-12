@@ -27,6 +27,7 @@ if ($_GET['create'] === "true") {
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="main">
+            <div id="logo"></div>
             <div class="nav"><a href="../index.php">BACK TO USER SELECT</a></div>
             <?php if ($_GET['create'] !== "true") { ?>
                 <div id="form">

@@ -23,6 +23,7 @@ if (file_exists("../db/$user.hbd")) {
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="main">
+            <div id="logo"></div>
             <?php print '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="../php/view-rooms.php?user='.$user.'">VIEW LOGS</a></div>'; ?>
             <h2>Pick a Room</h2>
             <form action="../php/display-stats.php?user=<?php print $user; ?>" method="POST">

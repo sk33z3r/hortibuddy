@@ -31,6 +31,7 @@ $html .= '<!--[if lt IE 7]>';
 $html .= '<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>';
 $html .= '<![endif]-->';
 $html .= '<div id="main">';
+$html .= '<div id="logo"></div>';
 $html .= '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="../php/view-rooms.php?user='.$user.'">VIEW LOGS</a></div>';
 $html .= '<table class="darkTable">';
 $html .= '<thead>';

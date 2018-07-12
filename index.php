@@ -18,7 +18,8 @@ $files = scandir("db/", 0); ?><!DOCTYPE html>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="main">
-            <h2>Database Management</h2>
+            <div id="logo"></div>
+            <h2>Current Users</h2>
             <?php
                 // Grab the filenames of all .hbd files in the db folder, then strip out .hbd and present the user with all the options
                 // Start with 2 because unix prints `.` and `..` as items in the array
@@ -26,8 +27,11 @@ $files = scandir("db/", 0); ?><!DOCTYPE html>
                     print '<a href="php/menu.php?user='.substr($files[$i], 0, -4).'"><button>'.substr($files[$i], 0, -4).'</button></a>';
                 }
             ?>
-            <a href="php/del-db.php"><button>Delete</button></a>
-            <a href="php/new-db.php"><button>Create New</button></a>
+            <div>
+                <h2>User Management</h2>
+                <a href="php/del-db.php"><button>Delete</button></a>
+                <a href="php/new-db.php"><button>Create New</button></a>
+            </div>
         </div>
     </body>
 </html>
