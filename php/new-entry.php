@@ -58,7 +58,7 @@ $html .= '<![endif]-->';
 $html .= '<div id="main">';
 $html .= '<div id="logo"></div>';
 $html .= '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="../php/entry-form.php?user='.$user.'">NEW LOG ENTRY</a></div>';
-$html .= '<div id="form">';
+$html .= '<div id="entry-form">';
 $html .= '<h2>Entry Logged</h2>';
 $html .= '<div id="left">';
 $html .= '<h3>Entry ID</h3>';
