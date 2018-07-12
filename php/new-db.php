@@ -30,7 +30,7 @@ if ($_GET['create'] === "true") {
             <div id="logo"></div>
             <div class="nav"><a href="../index.php">BACK TO USER SELECT</a></div>
             <?php if ($_GET['create'] !== "true") { ?>
-                <div id="form">
+                <div id="del-form">
                     <h2>Create New Database</h2>
                     <div id="left">
                         <h3>Username <span class="red">*</span></h3>
@@ -39,9 +39,9 @@ if ($_GET['create'] === "true") {
                     <div id="right">
                         <form action="../php/new-db.php" method="GET">
                             <input type="hidden" name="create" value="true" />
-                            <input type="text" size="35" name="user" required /><br />
-                            <input type="checkbox" name="pin" /><br />
-                            <input type="submit" value="SUBMIT" />
+                            <input class="formstyle" type="text" size="35" name="user" required /><br />
+                            <input class="checkbox" type="checkbox" name="pin" /><br />
+                            <button type="submit">SUBMIT</button>
                         </form>
                     </div>
                 </div>

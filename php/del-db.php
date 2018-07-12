@@ -31,17 +31,19 @@ if ($_GET['delete'] !== "true") {
             <div class="nav"><a href="../index.php">BACK TO USER SELECT</a></div>
             <h2>Delete Users</h2>
             <?php if ($_GET['delete'] !== "true") { ?>
-            <form action="../php/del-db.php" method="GET">
-                <input type="hidden" name="delete" value="true" />
-                <?php
-                    // Grab the filenames of all .hbd files in the db folder, then strip out .hbd and present the user with all the options
-                    // Start with 2 because unix prints `.` and `..` as items in the array
-                    for ($i = 2; $i < count($files); $i++) {
-                        print '<input type="checkbox" name="db[]" value="'.substr($files[$i], 0, -4).'" /><b>'.substr($files[$i], 0, -4).'</b><br />';
-                    }
-                ?>
-                <button type="submit">Delete Selected</button>
-            </form>
+                <div id="del-form">
+                    <form action="../php/del-db.php" method="GET">
+                        <input type="hidden" name="delete" value="true" />
+                        <?php
+                            // Grab the filenames of all .hbd files in the db folder, then strip out .hbd and present the user with all the options
+                            // Start with 2 because unix prints `.` and `..` as items in the array
+                            for ($i = 2; $i < count($files); $i++) {
+                                print '<input class="checkbox" type="checkbox" name="db[]" value="'.substr($files[$i], 0, -4).'" /><span class="label">'.substr($files[$i], 0, -4).'</span><br />';
+                            }
+                        ?>
+                        <button type="submit">Delete Selected</button>
+                    </form>
+                </div>
             <?php } elseif (!isset($_GET['db'])) { ?>
                 <h2>No user selected!</h2>
                 <a href="javascript:history.go(-1)"><button>GO BACK</button></a>

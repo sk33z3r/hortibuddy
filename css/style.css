@@ -14,13 +14,20 @@ a, a:visited, a:hover, a:active {
     padding: 0;
 }
 
-form * {
+.formstyle {
     margin: 10px auto;
     border: 0.5px #2c4130 solid;
     background: #86cf92;
     width: 200px;
     height: 25px;
     font-weight: bold;
+    text-align: left;
+}
+
+.checkbox {
+    height: 25px;
+    width: 25px;
+    margin: 10px 10px 10px 70px;
 }
 
 button, button:visited {
@@ -68,6 +75,12 @@ h3 {
     margin: 17px auto 32px auto;
 }
 
+.label {
+    margin: 0;
+    display: inline;
+    font-size: 16pt;
+}
+
 #left {
     margin: 0 10px 0 0;
     float: left;
@@ -92,9 +105,15 @@ h3 {
     overflow-y: auto;
 }
 
-#form {
+#entry-form {
     margin: 0 auto;
     width: 320px;
+}
+
+#del-form {
+    margin: 0 auto;
+    width: 320px;
+    text-align: left;
 }
 
 #logo {
