@@ -24,7 +24,7 @@ if ($_GET['create'] === "true") {
         error('Database doesn\'t exist.');
     }
     // create the table/room
-    $db->query("CREATE TABLE IF NOT EXISTS $room (id INTEGER PRIMARY KEY AUTOINCREMENT, sec INTEGER, date TEXT, time TEXT, temp INTEGER, rh INTEGER, light TEXT, period TEXT, par INTEGER, notes TEXT);");
+    $db->query("CREATE TABLE IF NOT EXISTS $room (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, time TEXT, temp INTEGER, rh INTEGER, light TEXT, period TEXT, par INTEGER, notes TEXT);");
     // set the room name variable from the database
     $roomName = $db->query('SELECT name FROM main.sqlite_master WHERE tbl_name="'.$room.'"')->fetchArray();
 }

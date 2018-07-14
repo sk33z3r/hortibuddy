@@ -33,8 +33,8 @@ if ($prev === "view") {
     // set the SQL to get table names
     $tablesquery = $db->query("SELECT name FROM main.sqlite_master WHERE type='table';");
     // get and parse the table names for display, then display them
-    while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
-        if($table['name'] != 'sqlite_sequence') {
+    while ($tables = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
+        if( ($tables['name'] != 'sqlite_sequence') && ($tables['name'] != 'security') ) {
             print '<a href="../app/display-stats.php?user='.$user.'&room='.$table['name'].'&prev='.$prev.'"><button>'.$table['name'].'</button></a>';
         }
     }
@@ -46,8 +46,8 @@ if ($prev === "view") {
     // set the SQL to get table names
     $tablesquery = $db->query("SELECT name FROM main.sqlite_master WHERE type='table';");
     // get and parse the table names for display, then display them
-    while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
-        if($table['name'] != 'sqlite_sequence') {
+    while ($tables = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
+        if( ($tables['name'] != 'sqlite_sequence') && ($tables['name'] != 'security') ) {
             print '<a href="../app/entry-form.php?user='.$user.'&room='.$table['name'].'&prev='.$prev.'"><button>'.$table['name'].'</button></a>';
         }
     }

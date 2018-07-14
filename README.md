@@ -7,8 +7,8 @@ HortiBuddy is meant to be a gardener's companion. It can either be a standalone 
 ## SQLite3 Tidbits
 
 ```sql
-/* New table schema */
-CREATE TABLE IF NOT EXISTS $room (id INTEGER PRIMARY KEY AUTOINCREMENT, sec INTEGER, date TEXT, time TEXT, temp INTEGER, rh INTEGER, light TEXT, period TEXT, par INTEGER, notes TEXT);
+/* New table/room schema */
+CREATE TABLE IF NOT EXISTS $room (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, time TEXT, temp INTEGER, rh INTEGER, light TEXT, period TEXT, par INTEGER, notes TEXT);
 
 /* Change table/room name */
 ALTER TABLE `main`.`$oldname` RENAME TO `$newname`;
@@ -16,8 +16,8 @@ ALTER TABLE `main`.`$oldname` RENAME TO `$newname`;
 /* Delete table/room */
 DROP TABLE `main`.`$room`;
 
-/* Set secure variable */
-INSERT INTO $room (sec) VALUES (0|1);
+/* Create security table */
+CREATE TABLE IF NOT EXISTS security (pin INTEGER, passwd TEXT);
 
 /* New Log Entry */
 INSERT INTO $room (date, time, temp, rh, light, period) VALUES ('$date', '$time', '$temp', '$rh', '$light', '$period');
@@ -157,8 +157,9 @@ Future features include:
 - [ ] PIN protect (GPG encrypt) databases if desired
     - [ ] Should be able to add encryption if created initially without it
 - [ ] More responsive design for larger screens (focus is mobile)
+- [ ] Dis-allow rooms named `security`
 - [x] Template files for HTML rendering
-- [ ] Sanitize user inputs
-    - [ ] Remove spaces, replace with a dash
-    - [ ] Validate the input for each form
-    - [ ] Change to uppercase everytime
+- [x] Sanitize user inputs
+    - [x] Remove spaces, replace with a dash
+    - [x] Validate the input for each form
+    - [x] Change to uppercase everytime

@@ -12,19 +12,23 @@ if ( isset($_GET['user']) ) {
 if ($create === "true") {
     if (!file_exists("../db/$user.hbd")) {
         $db = new SQLite3("../db/$user.hbd");
+        $db->query("CREATE TABLE IF NOT EXISTS security (pin INTEGER, passwd TEXT);");
     } else {
         error('Database already exists?');
     }
 
     if ($pinSet === 'on') {
-        // create new table sec and set it to 1
+        // generate the pin
         $pin = random_str(32);
-        $gpg = "<code>Security Token would be set to 1 (true)</code><br />";
+        // set the pin field to 1
+        $db->query("INSERT INTO security (pin) VALUES (1);");
+        $gpg = "<code>Security Token set to 1 (true)</code><br />";
         $gpg .= '<code>Your pin is: '.$pin.'</code><br />';
         $gpg .= "<code>Save it somewhere safe, it will not be shown again or stored.</code>";
     } else {
-        //create new table sec and set it to 0
-        $gpg = "<code>Security Token would be set to 0 (false)</code>";
+        // set the pin field to 0
+        $db->query("INSERT INTO security (pin) VALUES (0);");
+        $gpg = "<code>Security Token set to 0 (false)</code>";
     }
 }
 

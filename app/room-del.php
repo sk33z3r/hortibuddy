@@ -51,7 +51,7 @@ if ($access !== "true") {
     $tablesquery = $db->query("SELECT name FROM main.sqlite_master WHERE type='table';");
     // get and parse the table names for display, then display them
     while ($tables = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
-        if($tables['name'] != 'sqlite_sequence') {
+        if( ($tables['name'] != 'sqlite_sequence') && ($tables['name'] != 'security') ) {
             print '<input class="checkbox" type="checkbox" name="rooms[]" value="'.$tables['name'].'" /><span class="label">'.$tables['name'].'</span><br />';
         }
     }
