@@ -18,8 +18,8 @@ for($i = 2; $i < count($files); $i++) {
 // user management nav
 print '<div>';
 print '<h2>User Management</h2>';
-print '<a href="app/del-db.php"><button>Delete</button></a>';
-print '<a href="app/new-db.php"><button>Create New</button></a>';
+print '<a href="app/user-del.php"><button>Delete Users</button></a>';
+print '<a href="app/user-add.php"><button>Create User</button></a>';
 print '</div>';
 
 include('helpers/footer.php');

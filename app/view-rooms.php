@@ -39,7 +39,7 @@ if ($prev === "view") {
         }
     }
 } elseif ($prev === "new") {
-    print '<div class="nav"><a href="../app/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="#">NEW LOG</a></div>';
+    print '<div class="nav"><a href="../app/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="#">CHOOSE ROOM</a></div>';
 
     print '<h2>Choose an existing room</h2>';
 
@@ -48,11 +48,13 @@ if ($prev === "view") {
     // get and parse the table names for display, then display them
     while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
         if($table['name'] != 'sqlite_sequence') {
-            print '<a href="../app/entry-form.php?user='.$user.'&room='.$table['name'].'"><button>'.$table['name'].'</button></a>';
+            print '<a href="../app/entry-form.php?user='.$user.'&room='.$table['name'].'&prev='.$prev.'"><button>'.$table['name'].'</button></a>';
         }
     }
 
-    print '<h2>Create a new room</h2>';
+    print '<h2>Room Management</h2>';
+    print '<a href="../app/room-del.php?user='.$user.'&prev='.$prev.'"><button>Delete Rooms</button></a>';
+    print '<a href="../app/room-add.php?user='.$user.'&prev='.$prev.'"><button>Create Room</button></a>';
 }
 
 include('../helpers/footer.php');

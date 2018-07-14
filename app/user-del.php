@@ -28,7 +28,7 @@ print '<h2>Delete Users</h2>';
 if ($access !== "true") {
     // show the delete form
     print '<div id="del-form">';
-    print '<form action="../app/del-db.php" method="GET">';
+    print '<form action="../app/user-del.php" method="GET">';
     print '<input type="hidden" name="delete" value="true" />';
     // Grab the filenames of all .hbd files in the db folder, then strip out .hbd and present the user with all the options
     // Start with 2 because unix prints `.` and `..` as items in the array
@@ -44,7 +44,7 @@ if ($access !== "true") {
     print '<a href="javascript:history.go(-1)"><button>GO BACK</button></a>';
 } elseif ($access === "true") {
     // show success message
-    print '<h2>Databases Deleted Successfully!</h2>';
+    print '<h2>Users Deleted Successfully!</h2>';
 }
 
 include('../helpers/footer.php');

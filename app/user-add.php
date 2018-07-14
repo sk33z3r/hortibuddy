@@ -28,13 +28,13 @@ print '<div class="nav"><a href="../index.php">BACK TO USER SELECT</a></div>';
 
 if ($create !== "true") {
     print '<div id="del-form">';
-    print '<h2>Create New Database</h2>';
+    print '<h2>Create New User</h2>';
     print '<div id="left">';
     print '<h3>Username <span class="red">*</span></h3>';
     print '<h3>PIN Protect?</h3>';
     print '</div>';
     print '<div id="right">';
-    print '<form action="../app/new-db.php" method="GET">';
+    print '<form action="../app/user-add.php" method="GET">';
     print '<input type="hidden" name="create" value="true" />';
     print '<input class="formstyle" type="text" size="35" name="user" required /><br />';
     print '<input class="checkbox" type="checkbox" name="pin" /><br />';
@@ -43,7 +43,8 @@ if ($create !== "true") {
     print '</div>';
     print '</div>';
 } elseif ($create === "true") {
-    print '<h2>Database Created Successfully!</h2>';
+    print '<h2>User Created Successfully!</h2>';
+    var_dump($_GET['pin']);
 } else {
     print '<h2>Something odd happened.</h2>';
 }

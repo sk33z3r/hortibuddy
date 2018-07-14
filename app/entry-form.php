@@ -3,9 +3,10 @@
 // set the variables
 $user = $_GET["user"];
 $room = $_GET["room"];
+$prev = $_GET["prev"];
 
 // if a variable is missing, exit with errors
-if ( (!isset($user) || $user === '') || (!isset($room) || $room === '') ) {
+if ( (!isset($user) || $user === '') || (!isset($room) || $room === '') || (!isset($prev) || $prev === '') ) {
     error('Missing a variable');
 }
 
@@ -25,7 +26,7 @@ $pageTitle = "New Log Entry for $user";
 include('../helpers/header.php');
 
 // navigation
-print '<div class="nav"><a href="../app/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="#">NEW LOG ENTRY</a></div>';
+print '<div class="nav"><a href="../app/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="../app/view-rooms.php?user='.$user.'&prev='.$prev.'">CHOOSE ROOM</a> &rharu; <a href="#">NEW LOG ENTRY</a></div>';
 
 print '<div id="entry-form">';
 print '<h2>New Log Entry</h2>';
@@ -38,7 +39,7 @@ print '<h3>PAR (&#181;m)</h3>';
 print '<h3>Notes</h3>';
 print '</div>';
 print '<div id="right">';
-print '<form action="../app/new-entry.php" method="POST">';
+print '<form action="../app/log-entry.php" method="POST">';
 print '<input type="hidden" name="room" value="'.$room.'" />';
 print '<input type="hidden" name="user" value="'.$user.'" />';
 print '<input class="formstyle" type="text" size="35" name="temp" required/><br />';
