@@ -10,14 +10,23 @@ if ( (!isset($user) || $user === '') || (!isset($prev) || $prev === '') ) {
     error('Missing a variable');
 }
 
+// open the db
+if (file_exists("../db/$user.hbd")) {
+    $db = new SQLite3("../db/$user.hbd");
+} else {
+    error('Database doesn\'t exist.');
+}
+
 // set the access type
 $access = $_GET['delete'];
 
 // check how the page was accessed
-if ($access !== "true") {
-    // get the list of tables
-} elseif ($access === "true") {
-    // delete the table
+if ($access === "true") {
+    // delete the tables
+    $rooms = $_GET['rooms'];
+    for ($d = 0; $d < count($rooms); $d++) {
+        $db->query("DROP TABLE main.$rooms[$d];");
+    }
 }
 
 // render the page
@@ -38,12 +47,19 @@ if ($access !== "true") {
     print '<input type="hidden" name="user" value="'.$user.'" />';
     print '<input type="hidden" name="prev" value="'.$prev.'" />';
 
-    print '<input class="checkbox" type="checkbox" name="tables[]" value="'.$room.'" /><span class="label">List of Existing Table Names</span><br />';
+    // set the SQL to get table names
+    $tablesquery = $db->query("SELECT name FROM main.sqlite_master WHERE type='table';");
+    // get and parse the table names for display, then display them
+    while ($tables = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
+        if($tables['name'] != 'sqlite_sequence') {
+            print '<input class="checkbox" type="checkbox" name="rooms[]" value="'.$tables['name'].'" /><span class="label">'.$tables['name'].'</span><br />';
+        }
+    }
 
     print '<button type="submit">Delete Selected</button>';
     print '</form>';
     print '</div>';
-} elseif (!isset($dbs)) {
+} elseif (!isset($rooms)) {
     // show an error
     print '<h2>No room selected!</h2>';
     print '<a href="javascript:history.go(-1)"><button>GO BACK</button></a>';

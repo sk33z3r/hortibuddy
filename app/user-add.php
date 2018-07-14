@@ -13,6 +13,10 @@ if ($create === "true") {
     } else {
         error('Database already exists?');
     }
+
+    if ($_GET['pin'] === 'on') {
+        $gpg = "Database would have been encrypted.";
+    }
 }
 
 // custom html title
@@ -44,7 +48,7 @@ if ($create !== "true") {
     print '</div>';
 } elseif ($create === "true") {
     print '<h2>User Created Successfully!</h2>';
-    var_dump($_GET['pin']);
+    print $gpg;
 } else {
     print '<h2>Something odd happened.</h2>';
 }
