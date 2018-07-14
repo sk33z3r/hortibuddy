@@ -1,37 +1,27 @@
-<?php
+<?php require('helpers/library.php');
+
 // scan the db directory
-$files = scandir("db/", 0); ?><!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title><?php print "HortiBuddy! The Garden Companion"; ?></title>
-        <meta name="description" content="HortiBuddy, the garden companion">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <div id="main">
-            <div id="logo"></div>
-            <h2>Current Users</h2>
-            <?php
-                // Grab the filenames of all .hbd files in the db folder, then strip out .hbd and present the user with all the options
-                // Start with 2 because unix prints `.` and `..` as items in the array
-                for($i = 2; $i < count($files); $i++) {
-                    print '<a href="php/menu.php?user='.substr($files[$i], 0, -4).'"><button>'.substr($files[$i], 0, -4).'</button></a>';
-                }
-            ?>
-            <div>
-                <h2>User Management</h2>
-                <a href="php/del-db.php"><button>Delete</button></a>
-                <a href="php/new-db.php"><button>Create New</button></a>
-            </div>
-        </div>
-    </body>
-</html>
+$files = scandir("db/", 0);
+
+// render the page
+
+include('helpers/header.php');
+
+print '<h2>Current Users</h2>';
+
+// Grab the filenames of all .hbd files in the db folder, then strip out .hbd and present the user with all the options
+// Start with 2 because unix prints `.` and `..` as items in the array
+for($i = 2; $i < count($files); $i++) {
+    print '<a href="app/menu.php?user='.substr($files[$i], 0, -4).'"><button>'.substr($files[$i], 0, -4).'</button></a>';
+}
+
+// user management nav
+print '<div>';
+print '<h2>User Management</h2>';
+print '<a href="app/del-db.php"><button>Delete</button></a>';
+print '<a href="app/new-db.php"><button>Create New</button></a>';
+print '</div>';
+
+include('helpers/footer.php');
+
+?>
