@@ -44,7 +44,13 @@ cd /var/www/html
 sudo git clone ssh://git@git.blackrookllc.com:222/black-rook-llc/horti-buddy.git hortibuddy
 ```
 
-#### 2. Create a vhost
+#### 2. Make sure the `db/` directory is writable by the web user
+
+```bash
+sudo chmod 777 /var/www/html/hortibuddy/db
+```
+
+#### 3. Create a vhost
 
 ```bash
 sudo nano /etc/nginx/sites-available/hortibuddy.conf
@@ -126,7 +132,7 @@ server {
 }
 ```
 
-#### 3. Enable and restart services
+#### 4. Enable and restart services
 
 ```bash
 sudo ln -s /etc/nginx/sites-available/hortibuddy.conf /etc/nginx/sites-enabled/hortibuddy.conf
