@@ -3,6 +3,7 @@
 // set variables
 $date = date("Y-m-d");
 $time = date("H:i:s");
+$prev = $_POST['prev'];
 $user = $_POST["user"];
 $room = $_POST["room"];
 $temp = $_POST["temp"];
@@ -47,7 +48,7 @@ $pageTitle = 'Entry Logged';
 
 include('../helpers/header.php');
 
-print '<div class="nav"><a href="../app/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="../app/entry-form.php?user='.$user.'&room='.$room.'">NEW LOG ENTRY</a></div>';
+print '<div class="nav"><a href="../app/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="../app/entry-form.php?user='.$user.'&room='.$room.'&prev='.$prev.'">NEW LOG ENTRY</a></div>';
 print '<div id="entry-form">';
 print '<h2>Entry Logged</h2>';
 print '<div id="left">';

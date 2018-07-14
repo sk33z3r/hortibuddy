@@ -146,7 +146,7 @@ Future features include:
 
 ### Current TODO
 
-- [ ] Databases need a way to manage tables/rooms
+- [x] Databases need a way to manage tables/rooms
 - [x] Forces the right room name
 - [ ] PIN protect (GPG encrypt) databases if desired
     - [ ] Should be able to add encryption if created initially without it

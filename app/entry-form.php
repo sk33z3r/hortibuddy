@@ -42,6 +42,7 @@ print '<div id="right">';
 print '<form action="../app/log-entry.php" method="POST">';
 print '<input type="hidden" name="room" value="'.$room.'" />';
 print '<input type="hidden" name="user" value="'.$user.'" />';
+print '<input type="hidden" name="prev" value="'.$prev.'" />';
 print '<input class="formstyle" type="text" size="35" name="temp" required/><br />';
 print '<input class="formstyle" type="text" size="35" name="rh" required/><br />';
 print '<select class="formstyle" name="light" required>';
