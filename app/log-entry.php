@@ -3,15 +3,15 @@
 // set variables
 $date = date("Y-m-d");
 $time = date("H:i:s");
-$prev = $_POST['prev'];
-$user = $_POST["user"];
-$room = $_POST["room"];
-$temp = $_POST["temp"];
-$rh = $_POST["rh"];
-$light = $_POST["light"];
-$period = $_POST["period"];
-$par = $_POST["par"];
-$notes = $_POST["notes"];
+$prev = cleanInput($_POST['prev']);
+$user = cleanInput($_POST["user"]);
+$room = cleanInput($_POST["room"]);
+$temp = cleanInput($_POST["temp"]);
+$rh = cleanInput($_POST["rh"]);
+$light = cleanInput($_POST["light"]);
+$period = cleanInput($_POST["period"]);
+$par = cleanInput($_POST["par"]);
+$notes = cleanInput($_POST["notes"]);
 
 // open the db
 if (file_exists("../db/$user.hbd")) {

@@ -1,9 +1,9 @@
 <?php require('../helpers/library.php');
 
 // set the variables
-$user = $_GET["user"];
-$prev = $_GET["prev"];
-$room = $_GET["room"];
+$user = cleanInput($_GET["user"]);
+$prev = cleanInput($_GET["prev"]);
+$room = cleanInput($_GET["room"]);
 
 // if a variable is missing, exit with errors
 if ( (!isset($user) || $user === '') || (!isset($prev) || $prev === '') ) {
@@ -18,7 +18,7 @@ if (file_exists("../db/$user.hbd")) {
 }
 
 // set the access type
-$access = $_GET['delete'];
+$access = cleanInput($_GET['delete']);
 
 // check how the page was accessed
 if ($access === "true") {

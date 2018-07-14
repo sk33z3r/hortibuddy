@@ -2,8 +2,10 @@
 
 // set variables if user is in post
 if ( isset($_GET['user']) ) {
-    $user = $_GET['user'];
-    $create = $_GET['create'];
+    $user = cleanInput($_GET['user']);
+    $user = strtoupper($user);
+    $create = cleanInput($_GET['create']);
+    $pinSet = cleanInput($_GET['pin']);
 }
 
 // create the database if the variable is set
@@ -14,8 +16,15 @@ if ($create === "true") {
         error('Database already exists?');
     }
 
-    if ($_GET['pin'] === 'on') {
-        $gpg = "Database would have been encrypted.";
+    if ($pinSet === 'on') {
+        // create new table sec and set it to 1
+        $pin = random_str(32);
+        $gpg = "<code>Security Token would be set to 1 (true)</code><br />";
+        $gpg .= '<code>Your pin is: '.$pin.'</code><br />';
+        $gpg .= "<code>Save it somewhere safe, it will not be shown again or stored.</code>";
+    } else {
+        //create new table sec and set it to 0
+        $gpg = "<code>Security Token would be set to 0 (false)</code>";
     }
 }
 

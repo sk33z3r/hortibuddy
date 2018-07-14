@@ -34,7 +34,7 @@ HortiBuddy currently requires the following:
 On an `apt` based system, you can run something like:
 
 ```bash
-sudo apt-get install -y nginx sqlite3 php7.2-fpm php7.2-sqlite3
+sudo apt-get install -y nginx sqlite3 php7.2-fpm php7.2-sqlite3 php7.2-mbstring
 ```
 
 #### 1. Clone the repository

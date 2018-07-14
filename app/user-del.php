@@ -1,7 +1,7 @@
 <?php require('../helpers/library.php');
 
 // set the access type
-$access = $_GET['delete'];
+$access = cleanInput($_GET['delete']);
 
 // check how the page was accessed
 if ($access !== "true") {

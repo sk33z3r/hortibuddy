@@ -1,8 +1,8 @@
 <?php require('../helpers/library.php');
 
 // set the variables
-$user = $_GET["user"];
-$prev = $_GET["prev"];
+$user = cleanInput($_GET["user"]);
+$prev = cleanInput($_GET["prev"]);
 global $create;
 global $room;
 
@@ -15,8 +15,9 @@ if ( (!isset($user) || $user === '') || (!isset($prev) || $prev === '') ) {
 if ($_GET['create'] === "true") {
     global $create;
     global $room;
-    $room = $_GET['room'];
-    $create = $_GET['create'];
+    $room = cleanInput($_GET['room']);
+    $room = strtoupper($room);
+    $create = cleanInput($_GET['create']);
     if (file_exists("../db/$user.hbd")) {
         $db = new SQLite3("../db/$user.hbd");
     } else {

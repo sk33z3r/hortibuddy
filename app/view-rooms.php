@@ -1,8 +1,8 @@
 <?php require('../helpers/library.php');
 
 // set the variables
-$user = $_GET["user"];
-$prev = $_GET["prev"];
+$user = cleanInput($_GET["user"]);
+$prev = cleanInput($_GET["prev"]);
 
 // if a variable is missing, exit with errors
 if ( (!isset($user) || $user === '') || (!isset($prev) || $prev === '') ) {

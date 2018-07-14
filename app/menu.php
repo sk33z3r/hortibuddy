@@ -1,12 +1,12 @@
 <?php require('../helpers/library.php');
 
+// set the username
+$user = cleanInput($_GET["user"]);
+
 // if a variable is missing, exit with errors
-if ( (!isset($_GET["user"]) || $_GET["user"] === '') ) {
+if ( (!isset($user) || $user === '') ) {
     error('Missing a variable');
 }
-
-// set the username
-$user = $_GET["user"];
 
 // open the db
 if (file_exists("../db/$user.hbd")) {

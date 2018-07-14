@@ -1,9 +1,9 @@
 <?php require('../helpers/library.php');
 
 // set variables
-$user = $_GET["user"];
-$room = $_GET["room"];
-$prev = $_GET["prev"];
+$user = cleanInput($_GET["user"]);
+$room = cleanInput($_GET["room"]);
+$prev = cleanInput($_GET["prev"]);
 
 // if a variable is missing, exit with errors
 if ( (!isset($user) || $user === '') || (!isset($room) || $room === '') || (!isset($prev) || $prev === '') ) {
