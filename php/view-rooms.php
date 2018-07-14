@@ -1,6 +1,13 @@
 <?php
-// set the username
+// if a variable is missing, exit with errors
+if ( (!isset($_GET["user"]) || $_GET["user"] === '') || (!isset($_GET["prev"]) || $_GET["prev"] === '') ) {
+    print '<code>ERROR: Missing a variable';
+    print '<br /><a href="/">Go Back</a>';
+    exit(1);
+}
+// set the variables
 $user = $_GET["user"];
+$prev = $_GET["prev"];
 // open the db
 if (file_exists("../db/$user.hbd")) {
     $db = new SQLite3("../db/$user.hbd");
@@ -24,9 +31,10 @@ if (file_exists("../db/$user.hbd")) {
         <![endif]-->
         <div id="main">
             <div id="logo"></div>
-            <?php print '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="../php/view-rooms.php?user='.$user.'">VIEW LOGS</a></div>'; ?>
-            <h2>Pick a Room</h2>
-            <form action="../php/display-stats.php?user=<?php print $user; ?>" method="POST">
+            <?php if ($prev === "view") { ?>
+                <?php print '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="#">VIEW LOGS</a></div>'; ?>
+                <h2>Choose a log to view</h2>
+                <form action="../php/display-stats.php?user=<?php print $user; ?>" method="POST">
                 <?php
                     // set the SQL to get table names
                     $tablesquery = $db->query("SELECT name FROM main.sqlite_master WHERE type='table';");
@@ -37,7 +45,22 @@ if (file_exists("../db/$user.hbd")) {
                         }
                     }
                 ?>
-            </form>
+                </form>
+            <?php } elseif ($prev === "new") { ?>
+                <?php print '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="#">NEW LOG</a></div>'; ?>
+                <h2>Choose an existing room</h2>
+                <?php
+                    // set the SQL to get table names
+                    $tablesquery = $db->query("SELECT name FROM main.sqlite_master WHERE type='table';");
+                    // get and parse the table names for display, then display them
+                    while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
+                        if($table['name'] != 'sqlite_sequence') {
+                            print '<a href="../php/entry-form.php?user='.$user.'&room='.$table['name'].'"><button>'.$table['name'].'</button></a>';
+                        }
+                    }
+                ?>
+                <h2>Create a new room</h2>
+            <?php } ?>
         </div>
     </body>
 </html>

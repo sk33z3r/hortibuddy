@@ -1,4 +1,10 @@
 <?php
+// if a variable is missing, exit with errors
+if ( (!isset($_GET["user"]) || $_GET["user"] === '') || (!isset($_POST["room"]) || $_POST["room"] === '') ) {
+    print '<code>ERROR: Missing a variable';
+    print '<br /><a href="/">Go Back</a>';
+    exit(1);
+}
 
 // set variables
 $user = $_GET["user"];

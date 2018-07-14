@@ -1,6 +1,13 @@
 <?php
-// set the username
+// if a variable is missing, exit with errors
+if ( (!isset($_GET["user"]) || $_GET["user"] === '') || (!isset($_GET["room"]) || $_GET["room"] === '') ) {
+    print '<code>ERROR: Missing a variable';
+    print '<br /><a href="/">Go Back</a>';
+    exit(1);
+}
+// set the variables
 $user = $_GET["user"];
+$room = $_GET["room"];
 // open the db
 if (file_exists("../db/$user.hbd")) {
     $db = new SQLite3("../db/$user.hbd");
@@ -28,7 +35,6 @@ if (file_exists("../db/$user.hbd")) {
             <div id="entry-form">
                 <h2>New Log Entry</h2>
                 <div id="left">
-                    <h3>Room ID <span class="red">*</span></h3>
                     <h3>Temp. (F) <span class="red">*</span></h3>
                     <h3>RH (%) <span class="red">*</span></h3>
                     <h3>Light Type <span class="red">*</span></h3>
@@ -38,7 +44,7 @@ if (file_exists("../db/$user.hbd")) {
                 </div>
                 <div id="right">
                     <form action="../php/new-entry.php?user=<?php print $user; ?>" method="POST">
-                        <input class="formstyle" type="text" size="35" name="room" required/><br />
+                        <input type="hidden" name="room" value="<?php print $room; ?>" />
                         <input class="formstyle" type="text" size="35" name="temp" required/><br />
                         <input class="formstyle" type="text" size="35" name="rh" required/><br />
                         <select class="formstyle" name="light" required>

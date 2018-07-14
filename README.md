@@ -12,25 +12,39 @@ HortiBuddy currently requires the following:
 * NGINX
 * SQLite3
 
-SQLite3 Table schema:
-```sql
-CREATE TABLE IF NOT EXISTS $room (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, time TEXT, temp INTEGER, rh INTEGER, light TEXT, period TEXT, par INTEGER, notes TEXT);
-```
-
 On an `apt` based system, you can run something like:
 
 ```bash
 sudo apt-get install -y nginx sqlite3 php7.2-fpm php7.2-sqlite3
 ```
 
-### 1. Clone the repository
+## SQLite3 Tidbits
+
+```sql
+/* Table schema */
+CREATE TABLE IF NOT EXISTS $room (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, time TEXT, temp INTEGER, rh INTEGER, light TEXT, period TEXT, par INTEGER, notes TEXT);
+
+/* Change table/room name */
+ALTER TABLE `main`.`$oldname` RENAME TO `$newname`;
+
+/* Delete table/room */
+DROP TABLE `main`.`$room`;
+
+/* Set PIN */
+
+/* Change PIN */
+
+/* Create PIN and encrypt database */
+```
+
+#### 1. Clone the repository
 
 ```bash
 cd /var/www/html
 sudo git clone ssh://git@git.blackrookllc.com:222/black-rook-llc/horti-buddy.git hortibuddy
 ```
 
-### 2. Create a vhost
+#### 2. Create a vhost
 
 ```bash
 sudo nano /etc/nginx/sites-available/hortibuddy.conf
@@ -112,7 +126,7 @@ server {
 }
 ```
 
-### 3. Enable and restart services
+#### 3. Enable and restart services
 
 ```bash
 sudo ln -s /etc/nginx/sites-available/hortibuddy.conf /etc/nginx/sites-enabled/hortibuddy.conf

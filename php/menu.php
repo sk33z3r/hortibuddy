@@ -1,4 +1,10 @@
 <?php
+// if a variable is missing, exit with errors
+if ( (!isset($_GET["user"]) || $_GET["user"] === '') ) {
+    print '<code>ERROR: Missing a variable';
+    print '<br /><a href="/">Go Back</a>';
+    exit(1);
+}
 // set the username
 $user = $_GET["user"];
 // open the db
@@ -26,8 +32,8 @@ if (file_exists("../db/$user.hbd")) {
             <div id="logo"></div>
             <div class="nav"><a href="../index.php">CHOOSE ANOTHER USER</a></div>
             <h2><?php print $user; ?>'s Menu</h2>
-            <a href="../php/entry-form.php?user=<?php print $user; ?>"><button>New Log Entry</button></a>
-            <a href="../php/view-rooms.php?user=<?php print $user; ?>"><button>View Logs</button></a>
+            <a href="../php/view-rooms.php?user=<?php print $user; ?>&prev=new"><button>New Log Entry</button></a>
+            <a href="../php/view-rooms.php?user=<?php print $user; ?>&prev=view"><button>View Logs</button></a>
         </div>
     </body>
 </html>
