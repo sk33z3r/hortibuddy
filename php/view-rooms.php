@@ -34,18 +34,16 @@ if (file_exists("../db/$user.hbd")) {
             <?php if ($prev === "view") { ?>
                 <?php print '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="#">VIEW LOGS</a></div>'; ?>
                 <h2>Choose a log to view</h2>
-                <form action="../php/display-stats.php?user=<?php print $user; ?>" method="POST">
                 <?php
                     // set the SQL to get table names
                     $tablesquery = $db->query("SELECT name FROM main.sqlite_master WHERE type='table';");
                     // get and parse the table names for display, then display them
                     while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
                         if($table['name'] != 'sqlite_sequence') {
-                            print "<button type=\"submit\" name=\"room\" value=\"".$table['name']."\">".$table['name']."</button>";
+                            print '<a href="../php/display-stats.php?user='.$user.'&room='.$table['name'].'&prev='.$prev.'"><button>'.$table['name'].'</button></a>';
                         }
                     }
                 ?>
-                </form>
             <?php } elseif ($prev === "new") { ?>
                 <?php print '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="#">NEW LOG</a></div>'; ?>
                 <h2>Choose an existing room</h2>

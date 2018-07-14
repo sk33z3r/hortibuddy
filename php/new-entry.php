@@ -3,7 +3,7 @@
 // set variables
 $date = date("Y-m-d");
 $time = date("H:i:s");
-$user = $_GET["user"];
+$user = $_POST["user"];
 $room = $_POST["room"];
 $temp = $_POST["temp"];
 $rh = $_POST["rh"];
@@ -57,7 +57,7 @@ $html .= '<p class="browsehappy">You are using an <strong>outdated</strong> brow
 $html .= '<![endif]-->';
 $html .= '<div id="main">';
 $html .= '<div id="logo"></div>';
-$html .= '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="../php/entry-form.php?user='.$user.'">NEW LOG ENTRY</a></div>';
+$html .= '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="../php/entry-form.php?user='.$user.'&room='.$room.'">NEW LOG ENTRY</a></div>';
 $html .= '<div id="entry-form">';
 $html .= '<h2>Entry Logged</h2>';
 $html .= '<div id="left">';

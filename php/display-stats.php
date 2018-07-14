@@ -1,6 +1,6 @@
 <?php
 // if a variable is missing, exit with errors
-if ( (!isset($_GET["user"]) || $_GET["user"] === '') || (!isset($_POST["room"]) || $_POST["room"] === '') ) {
+if ( (!isset($_GET["user"]) || $_GET["user"] === '') || (!isset($_GET["room"]) || $_GET["room"] === '') || (!isset($_GET["prev"]) || $_GET["prev"] === '') ) {
     print '<code>ERROR: Missing a variable';
     print '<br /><a href="/">Go Back</a>';
     exit(1);
@@ -8,7 +8,8 @@ if ( (!isset($_GET["user"]) || $_GET["user"] === '') || (!isset($_POST["room"]) 
 
 // set variables
 $user = $_GET["user"];
-$room = $_POST["room"];
+$room = $_GET["room"];
+$prev = $_GET["prev"];
 
 // open the db
 if (file_exists("../db/$user.hbd")) {
@@ -38,7 +39,7 @@ $html .= '<p class="browsehappy">You are using an <strong>outdated</strong> brow
 $html .= '<![endif]-->';
 $html .= '<div id="main">';
 $html .= '<div id="logo"></div>';
-$html .= '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="../php/view-rooms.php?user='.$user.'">VIEW LOGS</a></div>';
+$html .= '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="../php/view-rooms.php?user='.$user.'&prev='.$prev.'">VIEW LOGS</a></div>';
 $html .= '<table class="darkTable">';
 $html .= '<thead>';
 $html .= '<tr>';

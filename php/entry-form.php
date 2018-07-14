@@ -31,7 +31,7 @@ if (file_exists("../db/$user.hbd")) {
         <![endif]-->
         <div id="main">
             <div id="logo"></div>
-            <?php print '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="../php/entry-form.php?user='.$user.'">NEW LOG ENTRY</a></div>'; ?>
+            <?php print '<div class="nav"><a href="../php/menu.php?user='.$user.'">'.$user.'\'s MENU</a> &rharu; <a href="#">NEW LOG ENTRY</a></div>'; ?>
             <div id="entry-form">
                 <h2>New Log Entry</h2>
                 <div id="left">
@@ -43,8 +43,9 @@ if (file_exists("../db/$user.hbd")) {
                     <h3>Notes</h3>
                 </div>
                 <div id="right">
-                    <form action="../php/new-entry.php?user=<?php print $user; ?>" method="POST">
+                    <form action="../php/new-entry.php" method="POST">
                         <input type="hidden" name="room" value="<?php print $room; ?>" />
+                        <input type="hidden" name="user" value="<?php print $user; ?>" />
                         <input class="formstyle" type="text" size="35" name="temp" required/><br />
                         <input class="formstyle" type="text" size="35" name="rh" required/><br />
                         <select class="formstyle" name="light" required>
