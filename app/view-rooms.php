@@ -35,7 +35,7 @@ if ($prev === "view") {
     // get and parse the table names for display, then display them
     while ($tables = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
         if( ($tables['name'] != 'sqlite_sequence') && ($tables['name'] != 'security') ) {
-            print '<a href="../app/display-stats.php?user='.$user.'&room='.$table['name'].'&prev='.$prev.'"><button>'.$table['name'].'</button></a>';
+            print '<a href="../app/display-stats.php?user='.$user.'&room='.$tables['name'].'&prev='.$prev.'"><button>'.$tables['name'].'</button></a>';
         }
     }
 } elseif ($prev === "new") {
@@ -48,7 +48,7 @@ if ($prev === "view") {
     // get and parse the table names for display, then display them
     while ($tables = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
         if( ($tables['name'] != 'sqlite_sequence') && ($tables['name'] != 'security') ) {
-            print '<a href="../app/entry-form.php?user='.$user.'&room='.$table['name'].'&prev='.$prev.'"><button>'.$table['name'].'</button></a>';
+            print '<a href="../app/entry-form.php?user='.$user.'&room='.$tables['name'].'&prev='.$prev.'"><button>'.$tables['name'].'</button></a>';
         }
     }
 
